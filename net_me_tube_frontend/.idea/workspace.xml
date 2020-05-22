@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="073eb056-20bf-4178-b6b0-6042258f93eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/Main.elmo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/d.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/i.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm-stuff/0.19.1/o.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LoginBox.elm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.elm" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ElmWorkspace">
+    <elmProjects />
+    <settings elmCompilerPath="/usr/local/bin/elm" elmFormatPath="/usr/local/bin/elm-format" elmTestPath="" isElmFormatOnSaveEnabled="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cF8IGgeWbYwWDYjBOH2Tu6W8kT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.elm.workspace.ui.ElmWorkspaceConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="073eb056-20bf-4178-b6b0-6042258f93eb" name="Default Changelist" comment="" />
+      <created>1590112899510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590112899510</updated>
+      <workItem from="1590112900665" duration="7000" />
+      <workItem from="1590112918207" duration="21000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="774" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1590112906645">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="774" y="311" width="424" height="491" key="FileChooserDialogImpl/62.27.1858.1053@62.27.1858.1053" timestamp="1590112906645" />
+    <state x="480" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1590112937982">
+      <screen x="62" y="27" width="1858" height="1053" />
+    </state>
+    <state x="480" y="188" width="1022" height="737" key="SettingsEditor/62.27.1858.1053@62.27.1858.1053" timestamp="1590112937982" />
+  </component>
+</project>
