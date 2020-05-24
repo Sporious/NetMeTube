@@ -7,20 +7,24 @@ import Element.Background as Background
 import Element.Border as Border exposing (color)
 import Element.Events exposing (onClick)
 import Element.Input exposing (button)
-import LoginForm exposing (login_form_view)
 import Task
 import Time
 import Url
 
 
 type alias Model =
-    { a : String
-    , zone : Time.Zone
+    {
+     zone : Time.Zone
     , time : Time.Posix
     , key : Nav.Key
     , url : Url.Url
+    , main_model: MainModel
     }
 
+type alias MainModel =
+    {
+    a : String
+    }
 
 type Msg
     = NoOp
@@ -50,7 +54,6 @@ view model =
                 , centerX
                 ]
                 [ title_bar model
-                , login_form_view model
                 ]
         ]
     }
@@ -78,8 +81,7 @@ update msg model =
             ( model, Cmd.none )
 
         UrlChanged url ->
-            ( { model | url = url, a = model.a ++ "1" }, Cmd.none )
-
+            ( model, Cmd.none )
 
 subscriptions model =
     Time.every 1000 Tick
@@ -91,7 +93,7 @@ onUrlRequest request =
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    ( { a = "Test text", zone = Time.utc, time = Time.millisToPosix 0, key = key, url = url }, Task.perform AdjustTimeZone Time.here )
+    ( {  zone = Time.utc, time = Time.millisToPosix 0, key = key, url = url, main_model = {a =  ""} }, Task.perform AdjustTimeZone Time.here )
 
 
 title_bar model =
@@ -110,5 +112,5 @@ title_bar model =
         , paragraph [ onClick ProfileClicked ] [ text "Profile" ]
         , button [] { onPress = Just LogoutClicked, label = text "Logout" }
         , text <| String.fromInt (Time.toSecond model.zone model.time)
-        , text model.a
+        , text model.main_model.a
         ]
