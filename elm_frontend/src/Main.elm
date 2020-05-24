@@ -2,10 +2,12 @@ module Main exposing (main)
 
 import Browser exposing (Document)
 import Browser.Navigation as Nav
-import Element exposing (alignLeft, el, fill, height, image, padding, paragraph, px, rgb, rgb255, row, spacing, text, width)
+import Element exposing (alignLeft, centerX, el, fill, height, image, padding, paragraph, px, rgb, rgb255, row, spacing, text, width)
 import Element.Background as Background
 import Element.Border as Border exposing (color)
 import Element.Events exposing (onClick)
+import Element.Input exposing (button)
+import LoginForm exposing (login_form_view)
 import Task
 import Time
 import Url
@@ -16,7 +18,7 @@ type alias Model =
     , zone : Time.Zone
     , time : Time.Posix
     , key : Nav.Key
-    ,url : Url.Url
+    , url : Url.Url
     }
 
 
@@ -31,6 +33,7 @@ type Msg
 
 
 
+
 main : Program () Model Msg
 main =
     Browser.application { init = init, view = view, update = update, subscriptions = subscriptions, onUrlRequest = onUrlRequest, onUrlChange = UrlChanged }
@@ -38,10 +41,22 @@ main =
 
 view : Model -> Document Msg
 view model =
-    { title = "Page title", body = [ Element.layout [] <| title_bar model ] }
+    { title = "Page title"
+    , body =
+        [ Element.layout [] <|
+            Element.column
+                [ spacing 15
+                , padding 15
+                , centerX
+                ]
+                [ title_bar model
+                , login_form_view model
+                ]
+        ]
+    }
 
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         NoOp ->
@@ -53,11 +68,17 @@ update msg model =
         AdjustTimeZone zone ->
             ( { model | zone = zone }, Cmd.none )
 
-        HomeClicked -> (model,  Nav.pushUrl model.key  <| Url.toString model.url ++ "extra chars")
-        ProfileClicked -> (model, Cmd.none)
-        LogoutClicked -> (model, Cmd.none)
-        UrlChanged url -> ( { model | url = url, a = model.a ++ "1" }   , Cmd.none)
+        HomeClicked ->
+            ( model, Nav.pushUrl model.key <| Url.toString model.url ++ "extra chars" )
 
+        ProfileClicked ->
+            ( model, Cmd.none )
+
+        LogoutClicked ->
+            ( model, Cmd.none )
+
+        UrlChanged url ->
+            ( { model | url = url, a = model.a ++ "1" }, Cmd.none )
 
 
 subscriptions model =
@@ -68,9 +89,7 @@ onUrlRequest request =
     NoOp
 
 
-
-
-init : () -> Url.Url -> Nav.Key -> (Model, Cmd Msg)
+init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
     ( { a = "Test text", zone = Time.utc, time = Time.millisToPosix 0, key = key, url = url }, Task.perform AdjustTimeZone Time.here )
 
@@ -85,12 +104,11 @@ title_bar model =
         , Border.width <| 1
         , Border.rounded 10
         , Border.shadow { offset = ( 10, 10 ), size = 3, blur = 0, color = rgb255 0 0 10 }
-
         ]
         [ image [ width <| px 50, height <| px 50 ] { description = "image_desc", src = "https://avatars0.githubusercontent.com/u/285019?s=460&u=11f599c6bf0717819b628163dca450240bcdba62&v=4" }
-        , paragraph [onClick HomeClicked ] [ text "Home" ]
-        , paragraph [onClick ProfileClicked] [ text "Profile" ]
-        , paragraph [onClick LogoutClicked] [ text "Logout" ]
+        , paragraph [ onClick HomeClicked ] [ text "Home" ]
+        , paragraph [ onClick ProfileClicked ] [ text "Profile" ]
+        , button [] { onPress = Just LogoutClicked, label = text "Logout" }
         , text <| String.fromInt (Time.toSecond model.zone model.time)
         , text model.a
         ]
