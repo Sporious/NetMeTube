@@ -42,7 +42,10 @@ type Msg
 
 main : Program () Model Msg
 main =
-    Browser.application { init = init, view = view, update = update, subscriptions = subscriptions, onUrlRequest = onUrlRequest, onUrlChange = UrlChanged }
+    Debug.log "main " "Hello world program"
+        |> (\_ ->
+                Browser.application { init = init, view = view, update = update, subscriptions = subscriptions, onUrlRequest = onUrlRequest, onUrlChange = UrlChanged }
+           )
 
 
 view : Model -> Document Msg
